@@ -13,14 +13,14 @@ async function passwordGenerator(Password) {
 
 // Getting user from the DB
 async function getuser(userdata) {
-    let result = await client.db('movielist').collection('users').findOne( userdata );
+    let result = await client.db('Password-reset-flow').collection('MERN').findOne( userdata );
     return result;
 }
 
 
 // Creating data for the user
 async function createuser(data) {
-    return await client.db('movielist').collection('users').insertOne(data);
+    return await client.db('Password-reset-flow').collection('MERN').insertOne(data);
 }
 
 
@@ -28,7 +28,7 @@ async function createuser(data) {
 async function passwordUpdate(userdata)
 {
     let {Mailid,token}=userdata
-    let result=await client.db('movielist').collection('users').updateOne({Mailid},{$set:{Password:token}})
+    let result=await client.db('Password-reset-flow').collection('MERN').updateOne({Mailid},{$set:{Password:token}})
     return result
 }
 
@@ -37,7 +37,7 @@ async function passwordUpdate(userdata)
 async function updateuser(userdata)
 {
     const{Mailid,Password}=userdata
-    let result=await client.db('movielist').collection('users').updateOne({Mailid},{$set:{Password:Password}})
+    let result=await client.db('Password-reset-flow').collection('MERN').updateOne({Mailid},{$set:{Password:Password}})
     return result;
 }
 
@@ -46,7 +46,7 @@ async function updateuser(userdata)
 async function updateuserlastseen(userdata)
 {
     const{Mailid,date,LastVisited}=userdata
-    let result=await client.db('movielist').collection('users').updateOne({Mailid},{$set:{LastVisited:date}})
+    let result=await client.db('Password-reset-flow').collection('MERN').updateOne({Mailid},{$set:{LastVisited:date}})
     return result;
 }
 
